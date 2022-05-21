@@ -12,7 +12,7 @@ node {
        
        
         stage ('Docker Build') {
-          docker.build('013593650453.dkr.ecr.us-east-1.amazonaws.com/angi-test:latest')
+          docker.build('013593650453.dkr.ecr.us-east-1.amazonaws.com/angi-test:${env.BUILD_ID}')
         }
         
         stage ('Docker Push to ECR')
