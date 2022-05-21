@@ -12,12 +12,12 @@ node {
        
        
         stage ('Docker Build') {
-            docker.build('013593650453.dkr.ecr.us-east-1.amazonaws.com/angi-test:latest')
+          docker.build('013593650453.dkr.ecr.us-east-1.amazonaws.com/angi-test:${GIT_COMMIT}')
         }
         
         stage ('Docker Push to ECR')
             docker.withRegistry('https://013593650453.dkr.ecr.us-east-1.amazonaws.com/angi-test', 'ecr:us-east-1:aws-credentials'){
-            docker.image('013593650453.dkr.ecr.us-east-1.amazonaws.com/angi-test:latest').push('latest')
+            docker.image('013593650453.dkr.ecr.us-east-1.amazonaws.com/angi-test:${GIT_COMMIT}').push('${GIT_COMMIT}')
         }
   
         stage ('K8S Deploy'){
