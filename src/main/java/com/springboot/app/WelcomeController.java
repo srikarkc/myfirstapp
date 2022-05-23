@@ -10,4 +10,7 @@ public class WelcomeController {
 	public String welcome() {
 	 return "Hello World! Made for Angi by Srikar KC.";
  }
+	public String first_feature() {
+	 return "This is my awesome feature 1.";
+ }
 }
